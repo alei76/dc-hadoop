@@ -1,0 +1,136 @@
+module PlayerInfo
+{     
+	struct PayInfo{
+		0 require int payDay; //付费天，相对于新增日期
+		1 require int payAmount; //付费金额，当日付费金额
+		2 require int payTimes;  //付费次数 
+	}; 
+	struct OnlineDay{
+		0 require int onlineDate;//在线时间戳
+		1 optional int onlineTime;//当日总在线时长
+		2 optional int loginTimes;//当日登陆次数
+		3 optional int payAmount;//当日付费金额
+		4 optional int payTimes;//当日付费次数
+	}; 
+    struct PlayerDayInfo
+    {
+		0 require int actTime; 
+		1 require int regTime;
+		2 require int firstLoginDate; //首登
+		3 require int lastLoginDate; //末登
+		4 require int totalOnlineDay;
+		5 require int totalLoginTimes;
+		6 require int totalOnlineTime;
+		7 require byte weekOnlineDay;
+		8 require short weekLoginTimes;
+		9 require int weekOnlineTime;
+		10 require int weekCurrencyAmount;
+		11 require short weekPayTimes;
+		12 require byte monthOnlineDay;
+		13 require short monthLoginTimes;
+		14 require int monthOnlineTime;
+		15 require int monthCurrencyAmount;
+		16 require short monthPayTimes;		
+		17 require int firstPayDate;   
+		18 require int lastPayDate;
+		19 require int totalCurrencyAmount; 
+		20 require int totalPayTimes;  
+		21 require int level ; 
+		22 require string channel;
+		23 require string gameRegion;
+		24 require int track;
+		25 require int payTrack; 
+		26 optional int lastPayOnlineTime;
+		27 optional vector<int> onlineDay; //废弃不用
+		28 optional vector<PayInfo> payInfoList;  //废弃不用
+		29 optional vector<OnlineDay> onlineDayList;
+    }; 
+    struct PlayerInfoForHbase{
+      	0 require int actTime=0; 
+		1 require int regTime=0;
+		2 require int firstLoginDate; 
+		3 require int lastLoginDate;  
+		4 require int totalOnlineDay;
+		5 require int totalLoginTimes;
+		6 require int totalOnlineTime;	
+		7 require int firstPayDate;   
+		8 require int lastPayDate;
+		9 require int totalCurrencyAmount; 
+		10 require int totalPayTimes;  
+		11 require int level ; 
+		12 require string channel;
+		13 require string gameRegion;
+		14 optional int lastPayOnlineTime;
+		15 optional vector<int> onlineDay; //废弃不用
+		16 optional vector<PayInfo> payInfoList; //废弃不用
+		17 optional vector<OnlineDay> onlineDayList;
+    };
+    struct PlayerInfoMap{
+      	0 require map<string,PlayerInfoForHbase> playerInfoMap; 
+    };
+   	struct PlayerWeekInfo
+    { 
+		0 require int firstLoginWeekDate; //首登周，对应每周一00:00:00
+		1 require int lastLoginWeekDate; //最后登录周,对应每周一00:00:00 
+		2 require int firstPayWeekDate; //首次付费周
+		3 require int lastPayWeekDate; //最后付费 
+		4 require string channel; //渠道
+		5 require string gameRegion; //区服 
+		6 require int track;
+		7 require int payTrack; 
+    }; 
+   	struct PlayerMonthInfo
+    { 
+		0 require int firstLoginMonthDate; //首登月，对应每月1号00:00:00
+		1 require int lastLoginMonthDate; //最后登录月,对应每月1号00:00:00 
+		2 require int firstPayMonthDate; //首次付费月
+		3 require int lastPayMonthDate; //最后付费 月
+		4 require string channel; //渠道
+		5 require string gameRegion; //区服 
+		6 require int track;
+		7 require int payTrack; 
+    };  
+    struct PlayerDeviceInfo
+    { 
+		0 optional string brand;
+		1 optional string resolution;
+		2 optional string opersystem;
+		3 optional string country;
+		4 optional string province;
+		5 optional string carrier;
+		6 optional int netType;
+		7 optional int gender;
+		8 optional int age;
+		9 optional int accountType;
+    };  
+    struct H5PlayerDayInfo
+    {
+		0 optional string uid; 
+		1 optional int platform;
+		2 optional string parentId; 
+		3 optional string promptApp; 
+		4 optional string refer;
+		5 optional string domain;
+		6 optional int createTime;
+		7 optional int firstLoginDate;
+		8 optional int lastLoginDate;
+		9 optional int firstPayDate;
+		10 optional int lastPayDate;
+		11 optional int totalOnlineDay;
+		12 optional int totalLoginTimes;
+		13 optional int totalOnlineTime;
+		14 optional int totalPayTimes;
+		15 optional int totalCurrencyAmount;	
+		16 optional int track;
+		17 optional int payTrack; 		
+		18 optional vector<H5OnlineDay> onlineDayList;
+    };
+    struct H5OnlineDay{
+		0 optional int onlineDate;//在线时间戳
+		1 optional int onlineTime;//当日总在线时长
+		2 optional int loginTimes;//当日登陆次数
+		3 optional int payAmount;//当日付费金额
+		4 optional int payTimes;//当日付费次数
+		5 optional int maxLevel;
+	};     
+};

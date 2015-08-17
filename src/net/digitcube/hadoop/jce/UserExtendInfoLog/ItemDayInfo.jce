@@ -1,0 +1,17 @@
+module UserExtRolling
+{     
+	
+    struct ItemDayInfo
+    {
+		0 optional string itemId; 
+		1 optional string itemType;
+		2 optional int buyCount; 
+		3 optional int gainCount; 
+		4 optional int useCount;
+		5 optional map<string,int> buyMap;
+		6 optional map<string,int> buyCntMap;
+		7 optional map<string,int> gainCntMap;
+		8 optional map<string,int> useCntMap;
+    };
+   
+};
